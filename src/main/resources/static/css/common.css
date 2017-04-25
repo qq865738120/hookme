@@ -1,0 +1,11 @@
+
+html,body{
+    margin: 0;
+    height: 100%;
+}
+body{
+    background: url("/../img/combg.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: #2e364b;
+}

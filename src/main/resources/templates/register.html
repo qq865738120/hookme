@@ -1,0 +1,27 @@
+<!--注册页面-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/../css/common.css"/>
+    <link rel="stylesheet" href="/../component/component.css"/>
+    <link rel="stylesheet" href="/../css/register.css" />
+    <script src="/../ventor/vue/vue.js"></script>
+    <script src="/../ventor/vue/plugins/vue-resource.js"></script>
+    <title>注册</title>
+</head>
+<body>
+    <div id="vue-app">
+        <my-header home-url="/" :display-right="false"></my-header>
+        <div class="maring-top"></div>
+        <my-font></my-font>
+        <!--<my-active v-if="false"></my-active>-->
+        <my-fonter value1="安全认证" class="fonter"></my-fonter>
+    </div>
+    <script th:src="@{/../component/button.js}"></script>
+    <script th:src="@{/../component/headportrait.js}"></script>
+    <script th:src="@{/../component/header.js}"></script>
+    <script th:src="@{/../component/fonter.js}"></script>
+    <script th:src="@{/../js/register.js}"></script>
+</body>
+</html>

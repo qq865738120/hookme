@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8"/>
+    <script th:src="@{/../ventor/vue/vue.js}"></script>
+    <script th:src="@{/../ventor/vue/plugins/vue-resource.js}"></script>
+    <title>登陆</title>
+    
+    <style>
+        body{
+            background: url("/../img/freedom.jpg");
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="app">
+        用户名：<input type="text" value="用户名" id="username" v-model="userName" /><br/>
+        密码：<input type="password" value="密码" id="password" v-model="password" /><br/>
+        <button v-on:click="submit">登陆</button>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                postUrl: "/loginPost",
+                userName: "",
+                password: "",
+            },
+            methods: {
+                submit:function () {
+                    alert("1123");
+                    var vm = this;
+                    var data = {
+                        userName: this.userName,
+                        password: this.password
+                    };
+                    this.$http.post(this.postUrl, data).then(function (response) {
+                        console.log(response.data);
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+</html>

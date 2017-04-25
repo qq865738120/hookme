@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/../css/common.css"/>
+    <link rel="stylesheet" href="/../component/component.css"/>
+    <script src="/../ventor/vue/vue.js"></script>
+    <script src="/../ventor/vue/plugins/vue-resource.js"></script>
+    <title>test</title>
+
+    <style>
+        body{
+            background-color: aquamarine;
+        }
+        #vue-app{
+            height: 100%;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="vue-app">
+        <my-header v-on:onclick="myclick" nick-name="test" head-picture="/../img/testHeadPicture.jpg" home-url="/"></my-header>
+        <!--<my-headerportrait></my-headerportrait>-->
+    </div>
+    <script th:src="@{/../component/button.js}"></script>
+    <script th:src="@{/../component/loginpage.js}"></script>
+    <script th:src="@{/../component/headportrait.js}"></script>
+    <script th:src="@{/../component/header.js}"></script>
+    <script>
+        Vue.component("login-page", loginPage);
+        Vue.component("my-header", header);
+        Vue.component("my-headerportrait", circleHeadPortrait)
+        var home = new Vue({
+            el: '#vue-app',
+            data: {
+                hello: 'hello'
+            },
+            methods: {
+                myclick: function () {
+                    alert("father");
+                }
+            }
+        });
+    </script>
+</body>
+</html>

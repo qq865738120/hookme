@@ -1,0 +1,30 @@
+<!--主页-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/../css/common.css"/>
+    <link rel="stylesheet" href="/../component/component.css"/>
+    <link rel="stylesheet" href="/../css/home.css" />
+    <script src="/../ventor/vue/vue.js"></script>
+    <script src="/../ventor/vue/plugins/vue-resource.js"></script>
+    <title>首页</title>
+</head>
+<body>
+<div id="bg">
+    <div id="vue-app">
+        <div id="small-logo"></div>
+        <a class="register" href="/register/">注册</a>
+        <div id="big-logo"></div>
+        <my-button value="登录" class="login-button" v-on:onclick="loginclick1" ></my-button>
+        <my-loginpage v-if="islogin" class="loginpage" v-on:close="loginpageclose" post-url="/loginpost" login-location=
+                "/hook" register-location="/register/" ></my-loginpage>
+        <my-fonter value1="安全认证" class="fonter"></my-fonter>
+    </div>
+    <script th:src="@{/../component/button.js}"></script>
+    <script th:src="@{/../component/loginpage.js}"></script>
+    <script th:src="@{/../component/fonter.js}"></script>
+    <script th:src="@{/../js/home.js}"></script>
+</div>
+</body>
+</html>
