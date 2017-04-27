@@ -19,7 +19,7 @@ public class MailUtil {
     public static void sendMail(String to, String code) throws Exception {
 
         String body = "<h1>激活邮件</h1>" +
-                "<a href='127.0.0.1:13145'>sdfsfsdf</a>";
+                "<a href='127.0.0.1:13145'>点击激活</a>";
         String userName = "qqq865738120@126.com";
         String password = "3.1415926535";
 

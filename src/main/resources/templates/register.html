@@ -14,8 +14,8 @@
     <div id="vue-app">
         <my-header home-url="/" :display-right="false"></my-header>
         <div class="maring-top"></div>
-        <my-font></my-font>
-        <!--<my-active v-if="false"></my-active>-->
+        <my-font :is-show="show" v-on:finished="finished"></my-font>
+        <my-active v-if="!show"></my-active>
         <my-fonter value1="安全认证" class="fonter"></my-fonter>
     </div>
     <script th:src="@{/../component/button.js}"></script>

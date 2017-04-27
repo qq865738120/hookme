@@ -9,6 +9,8 @@ import top.geekarea.common.ComResult;
 import top.geekarea.entity.User;
 import top.geekarea.enums.*;
 import top.geekarea.DAO.repository.UserRepository;
+import top.geekarea.utils.MailUtil;
+import top.geekarea.utils.UUIDUtil;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -104,7 +106,7 @@ public class UserService {
      * @param userRepository
      * @return
      */
-    public ComResult register(JSONObject jsonObject, UserRepository userRepository) {
+    public ComResult register(JSONObject jsonObject, UserRepository userRepository) throws Exception {
         ComResult verifyResult = new FormVerifyService().registerFormVerify(jsonObject);
         if (verifyResult.isResult()) { //通过表单验证
             User user = JSON.parseObject(jsonObject.toJSONString(), User.class);
@@ -112,6 +114,7 @@ public class UserService {
             user.setNickName(user.getUserName());
             if (new FormVerifyFactory().getVerifyByClass(FormVerifyEnum.EMAIL).form((String)jsonObject.get("userName")).isResult()) {
                 user.setEmail(user.getUserName());
+                MailUtil.sendMail(user.getUserName(), UUIDUtil.createCode()); //发送验证邮件
             }
             DaoResult daoResult = new UserDaoImp().save(user, userRepository);
             return daoResult;

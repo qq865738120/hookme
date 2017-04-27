@@ -7,7 +7,7 @@ Vue.component("my-header", header);
 Vue.component("my-button", baseButton);
 Vue.component("my-fonter", fonter);
 var fontComponent = {
-    poops: ['isShow'],
+    props: ['isShow'],
     data: function () {
         return {
             username: "",
@@ -17,7 +17,10 @@ var fontComponent = {
         }
     },
     methods:{
-        formFinished: function () {
+        /**
+         * 提交按钮函数,提供接口
+         */
+        finished: function () {
             var vm = this;
             var data = {
                 userName: this.username,
@@ -29,7 +32,7 @@ var fontComponent = {
                 if (responce.data.data.result == "true"){
                     console.log(responce.data.data.msg);
                     if (responce.data.data.msg == "邮箱注册成功") {
-                        window.location = "/active/";
+                        this.$emit('finished');
                     } else {
                         alert("注册成功");
                         window.location = "/"; //重定向到主页
@@ -44,7 +47,7 @@ var fontComponent = {
         },
     },
     template:
-        "<div id='local-component-form-div' v-if='isShow'>" +
+        "<div id='local-component-form-div' v-if='this.isShow'>" +
             "<div class='local-component-form-body'>" +
                 "<div class='local-component-form-left'>" +
                     "<div class='local-component-form-left-body'>" +
@@ -72,7 +75,7 @@ var fontComponent = {
                             "<br />" +
                             "<span class='local-component-form-body-text4-span'>*</span>" +
                         "</div>" +
-                        "<my-button value='完成' class='finish-button' v-on:onclick='formFinished'></my-button>" +
+                        "<my-button value='完成' class='finish-button' v-on:onclick='finished'></my-button>" +
                     "</div>" +
                 "</div>" +
                 "<div class='local-component-form-right'>" +
@@ -150,6 +153,14 @@ var activeComponent = {
 
 var register = new Vue({
     el: '#vue-app',
+    data: {
+        show: true,
+    },
+    methods: {
+        finished: function () {
+            this.show = !this.show;
+        }
+    },
     components: {
         "my-font": fontComponent,
         "my-active": activeComponent

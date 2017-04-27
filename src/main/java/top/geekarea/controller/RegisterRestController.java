@@ -38,9 +38,7 @@ public class RegisterRestController {
     @PostMapping("/finished")
     public Result formFinished(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
         JSONObject jsonObject = HttpServletUtil.getRequestPayload2JSON(httpServletRequest);
-//        User user = JSON.parseObject(jsonObject.toJSONString(), User.class);
         ComResult comResult = new UserService().register(jsonObject, userRepository);
-//        MailUtil.sendMail("865738120@qq.com", UUIDUtil.createCode());
         return ResultUtil.success((JSONObject) JSONObject.parse("{\"result\":\""+comResult.isResult()+"\",\"msg\":\""+comResult.getMsg()+"\"}"));
     }
 }
