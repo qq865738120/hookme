@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import top.geekarea.DAO.UserDao;
 import top.geekarea.DAO.UserDaoImp;
 import top.geekarea.common.ComResult;
+import top.geekarea.config.MyMailConfiguration;
 import top.geekarea.entity.Result;
 import top.geekarea.DAO.repository.UserRepository;
 import top.geekarea.entity.User;
@@ -35,10 +36,14 @@ public class RegisterRestController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    MyMailConfiguration myMailConfiguration;
+
     @PostMapping("/finished")
     public Result formFinished(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
         JSONObject jsonObject = HttpServletUtil.getRequestPayload2JSON(httpServletRequest);
-        ComResult comResult = new UserService().register(jsonObject, userRepository);
+        System.out.println("test: "+myMailConfiguration);
+        ComResult comResult = new UserService().register(jsonObject, userRepository, myMailConfiguration);
         return ResultUtil.success((JSONObject) JSONObject.parse("{\"result\":\""+comResult.isResult()+"\",\"msg\":\""+comResult.getMsg()+"\"}"));
     }
 }

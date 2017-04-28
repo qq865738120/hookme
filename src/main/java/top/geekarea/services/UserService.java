@@ -2,10 +2,12 @@ package top.geekarea.services;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import top.geekarea.DAO.DaoResult;
 import top.geekarea.DAO.UserDao;
 import top.geekarea.DAO.UserDaoImp;
 import top.geekarea.common.ComResult;
+import top.geekarea.config.MyMailConfiguration;
 import top.geekarea.entity.User;
 import top.geekarea.enums.*;
 import top.geekarea.DAO.repository.UserRepository;
@@ -106,7 +108,7 @@ public class UserService {
      * @param userRepository
      * @return
      */
-    public ComResult register(JSONObject jsonObject, UserRepository userRepository) throws Exception {
+    public ComResult register(JSONObject jsonObject, UserRepository userRepository, MyMailConfiguration myMailConfiguration) throws Exception {
         ComResult verifyResult = new FormVerifyService().registerFormVerify(jsonObject);
         if (verifyResult.isResult()) { //通过表单验证
             User user = JSON.parseObject(jsonObject.toJSONString(), User.class);
@@ -114,7 +116,7 @@ public class UserService {
             user.setNickName(user.getUserName());
             if (new FormVerifyFactory().getVerifyByClass(FormVerifyEnum.EMAIL).form((String)jsonObject.get("userName")).isResult()) {
                 user.setEmail(user.getUserName());
-                MailUtil.sendMail(user.getUserName(), UUIDUtil.createCode()); //发送验证邮件
+                MailUtil.sendMail(user.getUserName(), UUIDUtil.createCode(), myMailConfiguration); //发送验证邮件
             }
             DaoResult daoResult = new UserDaoImp().save(user, userRepository);
             return daoResult;

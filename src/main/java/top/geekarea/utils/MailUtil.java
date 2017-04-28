@@ -1,5 +1,8 @@
 package top.geekarea.utils;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import top.geekarea.config.MyMailConfiguration;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -16,17 +19,18 @@ public class MailUtil {
      * @param to 收件人
      * @param code 激活码
      */
-    public static void sendMail(String to, String code) throws Exception {
+    public static void sendMail(String to, String code, MyMailConfiguration myMailConfiguration) throws Exception {
 
-        String body = "<h1>激活邮件</h1>" +
-                "<a href='127.0.0.1:13145'>点击激活</a>";
-        String userName = "qqq865738120@126.com";
-        String password = "3.1415926535";
+        String body = "<h1>jihuoyoujian</h1>";
+//        String body = "<h1>激活邮件</h1>" +
+//                "<a href='127.0.0.1:13145'>点击激活</a>";
+        String userName = myMailConfiguration.getName();
+        String password = myMailConfiguration.getPassword();
 
         Properties properties = new Properties();
         properties.setProperty("mail.debug", "true");
         properties.setProperty("mail.smtp.auth", "true");
-        properties.setProperty("mail.host", "smtp.126.com");
+        properties.setProperty("mail.host", myMailConfiguration.getHost());
         properties.setProperty("mail.transport.protocol", "smtp");
 
         Session session = Session.getInstance(properties);
