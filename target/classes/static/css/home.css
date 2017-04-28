@@ -1,0 +1,82 @@
+/*主页样式表*/
+
+html body{
+    background: #ffffff;
+}
+
+#bg{
+    background: url("../img/homebj.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 100%;
+}
+#vue-app{
+    width: 100%;
+    height: 100%;
+}
+
+#small-logo{
+    height: 80px;
+    width: 100px;
+    margin-left: 50px;
+    background: url("../img/logo2.png");
+    background-repeat: no-repeat;
+    background-size: 100% 63%;
+    background-position-y: 30px;
+}
+#small-logo:hover{
+    background: url("../img/logo3.png");
+    background-repeat: no-repeat;
+    background-size: 100% 63%;
+    background-position-y: 30px;
+}
+
+.register{
+    color: #ffffff;
+    text-decoration: none;
+    float: right;
+    position: relative;
+    top: -36px;
+    right: 50px;
+}
+.register:hover{
+    color: #4e5e88;
+}
+
+#big-logo{
+    width: 400px;
+    height: 333px;
+    margin: auto;
+    margin-top: 110px;
+    background: url("../img/logo1.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+
+/*组件样式*/
+.login-button{
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    margin: auto;
+    margin-top: 50px;
+}
+.fonter{
+    margin-top: 12%;
+}
+.loginpage .component-loginpage-pagediv{
+    background: url("/../img/loginbg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.loginpage .component-loginpage-slogan{
+    background: url("/../img/slogan.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 130px;
+    height: 69px;
+    margin-left: 25%;
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
