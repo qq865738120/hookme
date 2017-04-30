@@ -21,9 +21,8 @@ public class MailUtil {
      */
     public static void sendMail(String to, String code, MyMailConfiguration myMailConfiguration) throws Exception {
 
-        String body = "<h1>jihuoyoujian</h1>";
-//        String body = "<h1>激活邮件</h1>" +
-//                "<a href='127.0.0.1:13145'>点击激活</a>";
+        String body = "<h1>激活邮件</h1>" +
+                "<a href='127.0.0.1:13145/register/active/"+UUIDUtil.createCode()+"'>点击激活</a>";
         String userName = myMailConfiguration.getName();
         String password = myMailConfiguration.getPassword();
 
@@ -38,7 +37,7 @@ public class MailUtil {
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(userName));
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
-        message.setSubject("sjlfj");
+        message.setSubject("hook激活");
         message.setContent(body, "text/html;charset=UTF-8");
 
         Transport transport = session.getTransport();

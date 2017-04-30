@@ -27,12 +27,9 @@ public class FormVerifyService {
      * @return
      */
     public VerifyResult registerFormVerify(JSONObject jsonObject) {
+
         FormVerifyFactory formVerifyFactory = new FormVerifyFactory(); //创建验证工厂实例
-//        HttpServletUtil httpServletUtil = new HttpServletUtil();
-//        JSONObject jsonObject = httpServletUtil.getRequestPayload2JSON(httpServletRequest); //获取请求中的数据
         Map<String,Object> map = new HashMap<String, Object>();
-//        map.put("userName", FormVerifyEnum.USER_NAME);
-//        map.put("userName", FormVerifyEnum.EMAIL);
         map.put("password1", FormVerifyEnum.PASSWORD); //key：前端发送过来的json的key  value：表单验证枚举
         map.put("password2", FormVerifyEnum.PASSWORD);
         map.put("age", FormVerifyEnum.AGE);

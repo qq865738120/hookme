@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/register")
 public class RegisterController {
 
+    /**
+     * 注册页
+     * @return
+     */
     @GetMapping("/")
     public String getRegister() {
         return "/register";

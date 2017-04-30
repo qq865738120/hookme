@@ -39,11 +39,9 @@ public class UserService {
 
         if (jsonObject.getString("userName").equals("")) { //用户名为空
             return new UserResult(UserResultEnum.USER_NAME_NULL);
-//            return (JSONObject)JSONObject.parse("{\"code\":\"1\",\"msg\":\"用户名不能为空\"}");
         }
         if (jsonObject.getString("password").equals("")){ //密码为空
             return new UserResult(UserResultEnum.PASSWORD_NULL);
-//            return (JSONObject)JSONObject.parse("{\"code\":\"2\",\"msg\":\"密码不能为空\"}");
         }
         User user = userRepository.findByUserNameOrEmail(jsonObject.getString("userName"),jsonObject.getString("userName")); //通过userName或者email查找用户
         if (user != null){
@@ -116,9 +114,11 @@ public class UserService {
             user.setNickName(user.getUserName());
             if (new FormVerifyFactory().getVerifyByClass(FormVerifyEnum.EMAIL).form((String)jsonObject.get("userName")).isResult()) {
                 user.setEmail(user.getUserName());
-                MailUtil.sendMail(user.getUserName(), UUIDUtil.createCode(), myMailConfiguration); //发送验证邮件
             }
             DaoResult daoResult = new UserDaoImp().save(user, userRepository);
+            if (daoResult.isResult()) { //用户信息成功写入数据库
+                MailUtil.sendMail(user.getUserName(), UUIDUtil.createCode(), myMailConfiguration); //发送验证邮件
+            }
             return daoResult;
         } else { //没有通过表单验证
             return verifyResult;

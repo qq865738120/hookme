@@ -26,24 +26,31 @@ var fontComponent = {
                 userName: this.username,
                 password1: this.password1,
                 password2: this.password2,
-                age: this.age
+                age: this.age,
             }
-            this.$http.post("/register/finished", data).then(function (responce) {
-                if (responce.data.data.result == "true"){
-                    console.log(responce.data.data.msg);
-                    if (responce.data.data.msg == "邮箱注册成功") {
-                        this.$emit('finished');
-                    } else {
-                        alert("注册成功");
-                        window.location = "/"; //重定向到主页
-                    }
-                }else {
-                    alert(responce.data.data.msg);
+            var checkbox = document.getElementsByClassName("local-component-form-right-body-second-checkbox");
+            for (var i=0; i<checkbox.length; i++) {
+                if (checkbox[i].checked) {
+                    this.$http.post("/register/finished", data).then(function (responce) {
+                            if (responce.data.data.result == "true"){
+                                console.log(responce.data.data.msg);
+                                if (responce.data.data.msg == "邮箱注册成功") {
+                                    this.$emit('finished');
+                                } else {
+                                    alert("注册成功");
+                                    window.location = "/"; //重定向到主页
+                                }
+                            }else {
+                                alert(responce.data.data.msg);
+                            }
+                        },
+                        function () {
+                            alert("服务器无响应,请稍后再试！");
+                        })
+                } else {
+                    alert("请勾选用户服务协议");
                 }
-            },
-            function () {
-                alert("服务器无响应,请稍后再试！");
-            })
+            }
         },
     },
     template:
@@ -117,7 +124,7 @@ var fontComponent = {
                             "六、在法律允许的范围内，hook保留对本协议任何条款的解释权和随时变更的权利。"+
                         "</div>" +
                         "<div class='local-component-form-right-body-second'>" +
-                            "<input type='checkbox' checked='checked' />" +
+                            "<input class='local-component-form-right-body-second-checkbox' type='checkbox' checked='checked' />" +
                             "<label>我同意并遵守上述协议</label>" +
                         "</div>" +
                     "</div>" +

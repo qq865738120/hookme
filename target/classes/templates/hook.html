@@ -1,0 +1,21 @@
+<!--应用页面-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/../css/common.css"/>
+    <link rel="stylesheet" href="/../component/component.css"/>
+    <link rel="stylesheet" href="/../css/hook.css" />
+    <script src="/../ventor/vue/vue.js"></script>
+    <script src="/../ventor/vue/plugins/vue-resource.js"></script>
+    <title>hook</title>
+</head>
+<body>
+    <div id="vue-app">
+        <my-header v-on:onclick="headPictureClick" :nick-name="nickName" :head-picture="imgUrl" home-url="/" :display-right="true"></my-header>
+    </div>
+    <script th:src="@{/../component/headportrait.js}"></script>
+    <script th:src="@{/../component/header.js}"></script>
+    <script th:src="@{/../js/hook.js}"></script>
+</body>
+</html>

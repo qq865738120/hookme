@@ -17,7 +17,6 @@ public class EmailVerify implements FormVerify {
         Pattern regex = Pattern.compile(check);
         Matcher matcher = regex.matcher(value);
         boolean isMatched = matcher.matches();
-        System.out.println(isMatched);
         if (!isMatched) { //验证通过
             return new VerifyResult(VerifyResultEnum.EMAIL_FORMAT_LAYOUT_ERROR);
         } else {

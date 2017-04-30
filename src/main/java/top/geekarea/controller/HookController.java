@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/hook")
 public class HookController {
 
+    /**
+     * 应用页
+     * @return
+     */
     @GetMapping("")
     public String getHook() {
         return "/hook";

@@ -3,9 +3,7 @@ package top.geekarea.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import top.geekarea.DAO.UserDao;
 import top.geekarea.DAO.UserDaoImp;
 import top.geekarea.common.ComResult;
@@ -35,15 +33,26 @@ public class RegisterRestController {
 
     @Autowired
     UserRepository userRepository;
-
     @Autowired
     MyMailConfiguration myMailConfiguration;
 
+    /**
+     * 提交注册信息接口
+     * @param httpServletRequest
+     * @param httpServletResponse
+     * @return
+     * @throws Exception
+     */
     @PostMapping("/finished")
     public Result formFinished(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
         JSONObject jsonObject = HttpServletUtil.getRequestPayload2JSON(httpServletRequest);
-        System.out.println("test: "+myMailConfiguration);
         ComResult comResult = new UserService().register(jsonObject, userRepository, myMailConfiguration);
         return ResultUtil.success((JSONObject) JSONObject.parse("{\"result\":\""+comResult.isResult()+"\",\"msg\":\""+comResult.getMsg()+"\"}"));
     }
+
+    @GetMapping(value = "/active/{code}")
+    public void activeUser(@PathVariable String code) {
+        System.out.println("test:   "+code);
+    }
+
 }

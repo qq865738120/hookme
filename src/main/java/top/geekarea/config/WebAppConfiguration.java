@@ -27,8 +27,7 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter {
         interceptorRegistration.excludePathPatterns("/");
         interceptorRegistration.excludePathPatterns("/comtest");
         interceptorRegistration.excludePathPatterns("/loginpost");
-        interceptorRegistration.excludePathPatterns("/register/*");
-        interceptorRegistration.excludePathPatterns("/active/*");
+        interceptorRegistration.excludePathPatterns("/register/**");
         super.addInterceptors(registry);
     }
 }
