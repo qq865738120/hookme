@@ -28,10 +28,11 @@ var fontComponent = {
                 password2: this.password2,
                 age: this.age,
             }
-            var dom = document.getElementsByClassName("local-component-form-right-body-second-checkbox");
-            for (var i=0; i<dom.length; i++) {
-                if (dom[i].checked) {
+            var checkbox = document.getElementsByClassName("local-component-form-right-body-second-checkbox");
+            for (var i=0; i<checkbox.length; i++) {
+                if (checkbox[i].checked) {
                     this.$http.post("/register/finished", data).then(function (responce) {
+                            console.log(responce);
                             if (responce.data.data.result == "true"){
                                 console.log(responce.data.data.msg);
                                 if (responce.data.data.msg == "邮箱注册成功") {

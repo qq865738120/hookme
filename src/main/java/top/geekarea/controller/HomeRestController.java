@@ -15,6 +15,8 @@ import top.geekarea.utils.UUIDUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 /**
  *  主页其余控制器类
@@ -33,6 +35,9 @@ public class HomeRestController {
     public Result loginPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
         JSONObject jsonObject = HttpServletUtil.getRequestPayload2JSON(httpServletRequest);
         ComResult comResult = new UserService().verifyUser(jsonObject, httpServletResponse, userRepository);
+        HttpSession session = httpServletRequest.getSession();
+        session.setAttribute("123","123");
+//        System.out.println("test1: ");
         return ResultUtil.success((JSONObject)JSONObject.parse("{\"code\":\""+comResult.getCode()+"\",\"msg\":\""+comResult.getMsg()+"\"}"));
     }
 }
