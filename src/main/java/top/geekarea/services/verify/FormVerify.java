@@ -1,4 +1,6 @@
-package top.geekarea.services;
+package top.geekarea.services.verify;
+
+import top.geekarea.services.result.VerifyResult;
 
 /**
  * 表单验证接口

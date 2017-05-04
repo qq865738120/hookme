@@ -1,4 +1,4 @@
-package top.geekarea.services;
+package top.geekarea.services.result;
 
 import top.geekarea.common.ComResult;
 import top.geekarea.enums.VerifyResultEnum;

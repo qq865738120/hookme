@@ -3,14 +3,11 @@ package top.geekarea.services;
 import com.alibaba.fastjson.JSONObject;
 import top.geekarea.enums.FormVerifyEnum;
 import top.geekarea.enums.VerifyResultEnum;
-import top.geekarea.utils.HttpServletUtil;
+import top.geekarea.services.result.VerifyResult;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * 表单验证业务类

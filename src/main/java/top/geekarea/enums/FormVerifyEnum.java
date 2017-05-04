@@ -5,10 +5,10 @@ package top.geekarea.enums;
  * Created by code_xia on 2017/4/16.
  */
 public enum FormVerifyEnum {
-    USER_NAME("top.geekarea.services.UserNameVerify"),
-    EMAIL("top.geekarea.services.EmailVerify"),
-    PASSWORD("top.geekarea.services.PasswordVerify"),
-    AGE("top.geekarea.services.AgeVerify"),
+    USER_NAME("top.geekarea.services.verify.UserNameVerify"),
+    EMAIL("top.geekarea.services.verify.EmailVerify"),
+    PASSWORD("top.geekarea.services.verify.PasswordVerify"),
+    AGE("top.geekarea.services.verify.AgeVerify"),
     ;
 
     private String className;

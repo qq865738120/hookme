@@ -31,17 +31,23 @@ var fontComponent = {
             var checkbox = document.getElementsByClassName("local-component-form-right-body-second-checkbox");
             for (var i=0; i<checkbox.length; i++) {
                 if (checkbox[i].checked) {
-                    this.$http.post("/register/finished", data).then(function (responce) {
-                            if (responce.data.data.result == "true"){
-                                console.log(responce.data.data.msg);
-                                if (responce.data.data.msg == "邮箱注册成功") {
-                                    this.$emit('finished');
-                                } else {
-                                    alert("注册成功");
-                                    window.location = "/"; //重定向到主页
+                    this.$http.post("/register/finished", data).then(function (response) {
+                            if (response.headers().msg != undefined) {
+                                alert(response.headers().msg);
+                            } else {
+                                if (response.data.data != undefined) {
+                                    if (response.data.data.result == "true"){
+                                        console.log(response.data.data.msg);
+                                        if (response.data.data.msg == "邮箱注册成功") {
+                                            this.$emit('finished');
+                                        } else {
+                                            alert("注册成功");
+                                            window.location = "/"; //重定向到主页
+                                        }
+                                    }else {
+                                        alert(response.data.data.msg);
+                                    }
                                 }
-                            }else {
-                                alert(responce.data.data.msg);
                             }
                         },
                         function () {

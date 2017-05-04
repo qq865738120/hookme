@@ -2,15 +2,14 @@ package top.geekarea.services;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import top.geekarea.DAO.DaoResult;
-import top.geekarea.DAO.UserDao;
 import top.geekarea.DAO.UserDaoImp;
 import top.geekarea.common.ComResult;
 import top.geekarea.config.MyMailConfiguration;
 import top.geekarea.entity.User;
 import top.geekarea.enums.*;
 import top.geekarea.DAO.repository.UserRepository;
+import top.geekarea.services.result.UserResult;
 import top.geekarea.utils.MailUtil;
 import top.geekarea.utils.UUIDUtil;
 
@@ -18,6 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *  用户业务类
@@ -46,7 +46,7 @@ public class UserService {
         User user = userRepository.findByUserNameOrEmail(jsonObject.getString("userName"),jsonObject.getString("userName")); //通过userName或者email查找用户
         if (user != null){
             if (user.getPassword().equals(jsonObject.getString("password"))){ //如果user对象中的password与请求中的password相同
-                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd|HH:mm:ss");
+//                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Cookie userNameCookie = new Cookie("userName", user.getUserName());
                 userNameCookie.setPath("/");
                 userNameCookie.setMaxAge(600000);
@@ -59,38 +59,38 @@ public class UserService {
                 emailCookie.setPath("/");
                 emailCookie.setMaxAge(600000);
                 httpServletResponse.addCookie(emailCookie);
-                Cookie iconCookie = new Cookie("icon", user.getIcon());
-                iconCookie.setPath("/");
-                iconCookie.setMaxAge(600000);
-                httpServletResponse.addCookie(iconCookie);
-                Cookie sexCookie = new Cookie("sex", user.getSex());
-                sexCookie.setPath("/");
-                sexCookie.setMaxAge(600000);
-                httpServletResponse.addCookie(sexCookie);
+//                Cookie iconCookie = new Cookie("icon", user.getIcon());
+//                iconCookie.setPath("/");
+//                iconCookie.setMaxAge(600000);
+//                httpServletResponse.addCookie(iconCookie);
+//                Cookie sexCookie = new Cookie("sex", user.getSex());
+//                sexCookie.setPath("/");
+//                sexCookie.setMaxAge(600000);
+//                httpServletResponse.addCookie(sexCookie);
                 Cookie ageCookie = new Cookie("age", user.getAge().toString());
                 ageCookie.setPath("/");
                 ageCookie.setMaxAge(600000);
                 httpServletResponse.addCookie(ageCookie);
-                Cookie birthdayCookie = new Cookie("birthday", format.format(user.getBirthday()));
-                birthdayCookie.setPath("/");
-                birthdayCookie.setMaxAge(600000);
-                httpServletResponse.addCookie(birthdayCookie);
-                Cookie createDataCookie = new Cookie("createData", format.format(user.getCreateDate()));
-                createDataCookie.setPath("/");
-                createDataCookie.setMaxAge(600000);
-                httpServletResponse.addCookie(createDataCookie);
+//                Cookie birthdayCookie = new Cookie("birthday", format.format(user.getBirthday()));
+//                birthdayCookie.setPath("/");
+//                birthdayCookie.setMaxAge(600000);
+//                httpServletResponse.addCookie(birthdayCookie);
+//                Cookie createDataCookie = new Cookie("createData", format.format(user.getCreateDate()));
+//                createDataCookie.setPath("/");
+//                createDataCookie.setMaxAge(600000);
+//                httpServletResponse.addCookie(createDataCookie);
                 Cookie nickameCookie = new Cookie("nickname", user.getNickName());
                 nickameCookie.setPath("/");
                 httpServletResponse.addCookie(nickameCookie);
                 nickameCookie.setMaxAge(600000);
-                Cookie rankCookie = new Cookie("rank", user.getRank().toString());
-                rankCookie.setPath("/");
-                rankCookie.setMaxAge(600000);
-                httpServletResponse.addCookie(rankCookie);
-                Cookie tagCookie = new Cookie("tag", user.getTag().toString());
-                tagCookie.setPath("/");
-                tagCookie.setMaxAge(600000);
-                httpServletResponse.addCookie(tagCookie);
+//                Cookie rankCookie = new Cookie("rank", user.getRank().toString());
+//                rankCookie.setPath("/");
+//                rankCookie.setMaxAge(600000);
+//                httpServletResponse.addCookie(rankCookie);
+//                Cookie tagCookie = new Cookie("tag", user.getTag().toString());
+//                tagCookie.setPath("/");
+//                tagCookie.setMaxAge(600000);
+//                httpServletResponse.addCookie(tagCookie);
                 return new UserResult(UserResultEnum.LOGIN_SUCCESS);
             }else {
                 return new UserResult(UserResultEnum.USER_NAME_OF_PASSWORD_ERROE);
@@ -115,9 +115,13 @@ public class UserService {
             if (new FormVerifyFactory().getVerifyByClass(FormVerifyEnum.EMAIL).form((String)jsonObject.get("userName")).isResult()) {
                 user.setEmail(user.getUserName());
             }
-            DaoResult daoResult = new UserDaoImp().save(user, userRepository);
+            user.setBirthday(new Date());
+            user.setCreateDate(new Date());
+            DaoResult daoResult = new UserDaoImp().save(user, userRepository); //用户数据写入数据库
             if (daoResult.isResult()) { //用户信息成功写入数据库
-                MailUtil.sendMail(user.getUserName(), UUIDUtil.createCode(), myMailConfiguration); //发送验证邮件
+                if (new FormVerifyFactory().getVerifyByClass(FormVerifyEnum.EMAIL).form((String)jsonObject.get("userName")).isResult()) {
+                    MailUtil.sendMail(user.getUserName(), UUIDUtil.createCode(), myMailConfiguration); //发送验证邮件
+                }
             }
             return daoResult;
         } else { //没有通过表单验证

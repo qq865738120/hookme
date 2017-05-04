@@ -1,6 +1,7 @@
-package top.geekarea.services;
+package top.geekarea.services.verify;
 
 import top.geekarea.enums.VerifyResultEnum;
+import top.geekarea.services.result.VerifyResult;
 
 /**
  * 年龄验证

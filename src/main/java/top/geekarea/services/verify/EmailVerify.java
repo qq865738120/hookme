@@ -1,6 +1,7 @@
-package top.geekarea.services;
+package top.geekarea.services.verify;
 
 import top.geekarea.enums.VerifyResultEnum;
+import top.geekarea.services.result.VerifyResult;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

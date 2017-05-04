@@ -34,10 +34,8 @@ public class HomeRestController {
     @PostMapping(value = "/loginpost")
     public Result loginPost(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
         JSONObject jsonObject = HttpServletUtil.getRequestPayload2JSON(httpServletRequest);
-        ComResult comResult = new UserService().verifyUser(jsonObject, httpServletResponse, userRepository);
-        HttpSession session = httpServletRequest.getSession();
-        session.setAttribute("123","123");
-//        System.out.println("test1: ");
+        UserService userService = new UserService();
+        ComResult comResult = userService.verifyUser(jsonObject, httpServletResponse, userRepository);
         return ResultUtil.success((JSONObject)JSONObject.parse("{\"code\":\""+comResult.getCode()+"\",\"msg\":\""+comResult.getMsg()+"\"}"));
     }
 }

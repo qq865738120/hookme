@@ -35,14 +35,19 @@ var loginPage = Vue.extend({
                 password: this.password
             };
             this.$http.post(this.postUrl, data).then(function (response) {
-                var code = response.data.data.code;
-                var msg = response.data.data.msg;
-                if (code != "3") { //表单验证失败
-                    alert(msg);
-                }else{ //登陆成功
-                    window.location = this.loginLocation; //重定向到登陆成功后的页面
-                    console.log(msg)
+                if (response.headers().msg != undefined) {
+                    alert(response.headers().msg);
+                } else {
+                    var code = response.data.data.code;
+                    var msg = response.data.data.msg;
+                    if (code != "3") { //表单验证失败
+                        alert(msg);
+                    }else{ //登陆成功
+                        window.location = this.loginLocation; //重定向到登陆成功后的页面
+                        console.log(msg)
+                    }
                 }
+
             },
             function () {
                 alert("服务器无响应,请稍后再试！");

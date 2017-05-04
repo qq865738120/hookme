@@ -13,23 +13,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 登陆控制拦截器
  * Created by code_xia on 2017/3/28.
  */
-public class WebFilterInterceptor implements HandlerInterceptor {
+public class LoginInterceptor implements HandlerInterceptor {
 
-    private final static Logger logger = LoggerFactory.getLogger(WebFilterInterceptor.class) ;
+    private final static Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 
     @Autowired
     UserRepository userRepository;
 
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-//        获取post请求的数据
-//        HttpServletUtil httpServletUtil = new HttpServletUtil();
-//        String data = httpServletUtil.getRequestPayload(httpServletRequest);
-//        System.out.println(data);
-//        JSONObject jsonObject =  (JSONObject) JSON.parse(data);
-//        System.out.println(jsonObject.get("userName"));
+
         Cookie[] cookies = httpServletRequest.getCookies();
         User user = null;
         if (cookies != null) {
