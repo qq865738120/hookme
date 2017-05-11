@@ -13,9 +13,26 @@
 <body>
     <div id="vue-app">
         <my-header v-on:onclick="headPictureClick" :nick-name="nickName" :head-picture="imgUrl" home-url="/" :display-right="true"></my-header>
+        <div class="top-blank"></div>
+        <div class="subject">
+            <my-sidebar :list="list" v-on:clicked="clickSidebar"></my-sidebar>
+            <div class="content">
+                <div class="content-body">
+                    <my-display-post
+                            class="display-post"
+                            :all-data="displayPostData"
+                            v-on:goodclicked="goodClicked"
+                            v-on:speackclicked="speackClicked"
+                            v-on:shareclicked="shareClicked"
+                    ></my-display-post>
+                </div>
+            </div>
+        </div>
     </div>
     <script th:src="@{/../component/headportrait.js}"></script>
     <script th:src="@{/../component/header.js}"></script>
+    <script th:src="@{/../component/sidebar.js}"></script>
+    <script th:src="@{/../component/displaypost.js}"></script>
     <script th:src="@{/../js/hook.js}"></script>
 </body>
 </html>

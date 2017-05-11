@@ -3,3 +3,30 @@
 body{
 
 }
+.top-blank {
+    height: 47px;
+    width: 960px;
+    margin: 0 auto;
+}
+.subject {
+    width: 960px;
+    height: 1000px;
+    background-color: rgba(125,97,54,0.35);
+    margin: 0 auto;
+}
+.content {
+    width: 812px;
+    height: 100%;
+    float: right;
+}
+.content .content-body {
+    width: 770px;
+    height: 800px;
+    margin: 10px 0;
+    border-left: 1px solid #888888;
+}
+.display-post{
+    width: 98% !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+}

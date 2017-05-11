@@ -20,28 +20,37 @@
 </head>
 <body>
     <div id="vue-app">
-        <my-header v-on:onclick="myclick" nick-name="test" head-picture="/../img/testHeadPicture.jpg" home-url="/"></my-header>
+        <!--<my-header v-on:onclick="myclick" nick-name="test" head-picture="/../img/testHeadPicture.jpg" home-url="/"></my-header>-->
         <!--<my-headerportrait></my-headerportrait>-->
+        <my-sidebar :list="arr" v-on:clicked="myclick"></my-sidebar>
     </div>
     <script th:src="@{/../component/button.js}"></script>
     <script th:src="@{/../component/loginpage.js}"></script>
     <script th:src="@{/../component/headportrait.js}"></script>
-    <script th:src="@{/../component/header.js}"></script>
+    <script th:src="@{/../component/sidebar.js}"></script>
     <script>
-        Vue.component("login-page", loginPage);
-        Vue.component("my-header", header);
-        Vue.component("my-headerportrait", circleHeadPortrait)
+        //Vue.component("login-page", loginPage);
+        //Vue.component("my-header", header);
+        //Vue.component("my-headerportrait", circleHeadPortrait)
+        Vue.component("my-sidebar", sidebar);
         var home = new Vue({
             el: '#vue-app',
             data: {
-                hello: 'hello'
+                hello: 'hello',
+                arr: [
+                    {name: "附近的人", icon: "/../img/homebj.jpg"},
+                    {name: "我的日记", icon: "/../img/logout2.png"},
+                    {name: "附近社团", icon: "/../img/logout2.png"},
+                ],
             },
             methods: {
-                myclick: function () {
-                    alert("father");
+                myclick: function (index) {
+                    alert(index);
                 }
             }
         });
+        //console.log(home);
+        //home.myclick();
     </script>
 </body>
 </html>
