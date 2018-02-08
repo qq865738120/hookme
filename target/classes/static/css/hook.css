@@ -10,9 +10,10 @@ body{
 }
 .subject {
     width: 960px;
-    height: 1000px;
+    min-height: 650px;
     background-color: rgba(125,97,54,0.35);
-    margin: 0 auto;
+    display: inline-block;
+    margin: 0 calc(50% - 480px);
 }
 .content {
     width: 812px;
@@ -21,12 +22,27 @@ body{
 }
 .content .content-body {
     width: 770px;
-    height: 800px;
     margin: 10px 0;
     border-left: 1px solid #888888;
+    min-height: 80vh;
 }
 .display-post{
     width: 98% !important;
     margin-right: 0 !important;
     margin-top: 0 !important;
+}
+.display-post #component-speak-div .component-circleHeadPortrait-name{
+    max-width: 102px;
+    overflow-x: hidden;
+}
+.my-header .component-circleHeadPortrait-name{
+    float: right;
+}
+.content-boy-nearbymodule-notData{
+    color: white;
+    font-size: 20px;
+    font-weight: 100;
+    margin-left: 39%;
+    float: left;
+    margin-top: 50%;
 }

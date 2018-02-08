@@ -26,8 +26,8 @@ var circleHeadPortrait = Vue.extend({
         "<div id='component-circleHeadPortrait-div' v-on:click='onclick' >" +
             "<div class='component-circleHeadPortrait-img' :style='background'>" +
             "</div>" +
-            "<span class='component-circleHeadPortrait-name'>" +
+            "<div class='component-circleHeadPortrait-name'>" +
                 "{{userName}}" +
-            "</span>" +
+            "</div>" +
         "</div>"
 })

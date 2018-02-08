@@ -22,9 +22,9 @@ public class SafetyControlInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         SafetyControlService safetyControlService = new SafetyControlService();
         ComResult comResult = safetyControlService.repeatCommit(httpServletRequest, httpServletResponse, httpServletRequest.getMethod());
-        if (comResult.isResult()) { //通过安全控制验证
-            return true;
-        } else {
+            if (comResult.isResult()) { //通过安全控制验证
+                return true;
+            } else {
             httpServletResponse.setCharacterEncoding("UTF-8");
             httpServletResponse.addHeader("msg", comResult.getMsg());
             return false;

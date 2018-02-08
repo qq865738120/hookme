@@ -2,16 +2,10 @@ package top.geekarea.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-import top.geekarea.entity.Result;
-import top.geekarea.entity.User;
-import top.geekarea.utils.ResultUtil;
-
-import java.util.ArrayList;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- *  主页控制类
+ *  主页模版控制类
  * Created by code_xia on 2017/4/1.
  */
 @Controller

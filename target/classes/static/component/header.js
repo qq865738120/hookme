@@ -50,4 +50,4 @@ var header = Vue.extend({
                 "</div>" +
             "</div>" +
         "</div>"
-})
+});

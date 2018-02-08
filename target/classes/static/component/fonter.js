@@ -17,4 +17,4 @@ var fonter = Vue.extend({
             "<hr />" +
             "<a>{{value1}}</a>"+
         "</div>"
-})
+});

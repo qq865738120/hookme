@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * Created by code_xia on 2017/4/27.
  */
 @Component //使该类能在其它类中使用@Autowrite
-@ConfigurationProperties(locations = "classpath:config/test.yml", prefix = "email")
+@ConfigurationProperties(locations = "classpath:config/my_application.yml", prefix = "email")
 public class MyMailConfiguration {
 
     private String name;

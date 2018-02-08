@@ -1,6 +1,6 @@
 package top.geekarea.utils;
 
-import top.geekarea.entity.Result;
+import top.geekarea.common.HTTPResult;
 
 /**
  * 异常工具类
@@ -13,19 +13,19 @@ public class ResultUtil {
      * @param object
      * @return
      */
-    public static Result success(Object object) {
-        Result result = new Result();
-        result.setCode(0);
-        result.setMsg("成功");
-        result.setData(object);
-        return result;
+    public static HTTPResult success(Object object) {
+        HTTPResult HTTPResult = new HTTPResult();
+        HTTPResult.setCode(0);
+        HTTPResult.setMsg("成功");
+        HTTPResult.setData(object);
+        return HTTPResult;
     }
 
     /**
      * 成功时调用此方法
      * @return
      */
-    public static Result success() {
+    public static HTTPResult success() {
         return success(null);
     }
 
@@ -35,10 +35,10 @@ public class ResultUtil {
      * @param msg
      * @return
      */
-    public static Result error(Integer code, String msg) {
-        Result result = new Result();
-        result.setCode(code);
-        result.setMsg(msg);
-        return result;
+    public static HTTPResult error(Integer code, String msg) {
+        HTTPResult HTTPResult = new HTTPResult();
+        HTTPResult.setCode(code);
+        HTTPResult.setMsg(msg);
+        return HTTPResult;
     }
 }

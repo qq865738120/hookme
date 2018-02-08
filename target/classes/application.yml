@@ -9,6 +9,9 @@ spring:
     url: jdbc:mysql://localhost:3306/hookmedb?characterEncoding=utf8
     username: root
     password: 123456
+#    url: jdbc:mysql://39.108.53.124:3306/hookmedb?characterEncoding=utf8
+#    username: root
+#    password: mysql675919
 ##thymeleaf配置
   thymeleaf:
     prefix: classpath:/templates

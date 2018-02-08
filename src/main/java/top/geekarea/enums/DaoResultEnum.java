@@ -10,7 +10,9 @@ public enum DaoResultEnum {
     USER_USER_NAME_REPETITION(002, false, "用户名不可用"),
     USER_USER_NAME_OR_EMAIL_REPETITION(003, false, "用户名或邮箱不可用"),
     USER_SAVE_SUCCESS_TO_NAME(004, true, "用户名注册成功"),
-    USER_SAVE_SUCCESS_TO_EMAIL(005, true, "邮箱注册成功");
+    USER_SAVE_SUCCESS_TO_EMAIL(005, true, "邮箱注册成功"),
+    QUERY_SUCCESS(006, true, "查询成功"),
+    QUERY_NULL(007, false, "查询结果为空")
     ;
 
     private int code;

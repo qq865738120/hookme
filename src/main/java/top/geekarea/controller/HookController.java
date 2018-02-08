@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * 应用页面控制类
+ * 应用页模版控制类
  * Created by code_xia on 2017/4/9.
  */
 @Controller

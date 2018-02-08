@@ -5,32 +5,22 @@
 Vue.component("my-header", header);
 Vue.component("my-sidebar", sidebar);
 Vue.component("my-display-post", displayPost);
+Vue.component("my-speak", speak);
 
 var hook = new Vue({
     el: '#vue-app',
     data: {
+        sidebarIndex: '',
         nickName: '',
         imgUrl: '',
         list: [
             {name: '附近', icon1: '/../img/nearby_icon_1.png', icon2: '/../img/nearby_icon_2.png', class: 'nearby'},
             {name: '社团', icon1: '/../img/organization_icon_1.png', icon2: '/../img/organization_icon_2.png', class: 'organization'},
             {name: '好友', icon1: '/../img/friends_icon_1.png', icon2: '/../img/friends_icon_2.png', class: 'friends'},
-            {name: '日记', icon1: '/../img/diary_icon_1.png', icon2: '/../img/diary_icon_2.png', class: 'diary'}
+            {name: '日记', icon1: '/../img/diary_icon_1.png', icon2: '/../img/diary_icon_2.png', class: 'diary'},
+            {name: '我的', icon1: '/../img/user_icon_1.png', icon2: '/../img/user_icon_2.png', class: 'user'}
         ],
-        displayPostData: {
-            nickName: "没什么大不了",
-            headPictureUrl: "/../img/testHeadPicture.jpg",
-            dateTimeAndDistance: "时间：21h     距离：1.2km",
-            goodNum: "514",
-            speachNum: "23",
-            shareNum: "1",
-            postMsg: "技术开发好卡手机话费快捷回复的卡发没发么那部分可减肥哈咖啡吧地方吗本发明的房间啊回复我空间而被人们不舒服马师傅",
-            imgUrl: [
-                "/../img/homebj.jpg",
-                "/../img/loginbg.jpg",
-                "/../img/homebj.jpg",
-            ],
-        },
+        displayPostData: [],
     },
     created: function () {
         this.setNickName();
@@ -53,7 +43,10 @@ var hook = new Vue({
          * 获取头像图片函数
          */
         setImgUrl: function () {
-            this.imgUrl = this.getCookieValue("icon");
+            if (this.getCookieValue("icon") == null || this.getCookieValue("icon") === "")
+                this.imgUrl = "../img/default_userhead_icon.png";
+            else
+                this.imgUrl = this.getCookieValue("icon");
         },
         /**
          * 获取cookie值
@@ -72,16 +65,21 @@ var hook = new Vue({
          * @param index
          */
         clickSidebar: function (index) {
-            alert(index);
+            this.sidebarIndex = index;
+            if (index == 0) {
+                this.$http.get("/hook/nearbyModule").then(function (responce) {
+                    this.displayPostData = responce.data;
+                }, function () {  });
+            }
         },
         /**
          * 点赞按钮
          */
-        goodClicked: function (num) {
+        goodClicked: function (num, id) {
             if (num == 1) {
-                this.displayPostData.goodNum += 1;
+                this.displayPostData[id].goodNum++;
             } else {
-                this.displayPostData.goodNum -= 1;
+                this.displayPostData[id].goodNum--;
             }
             alert("点赞");
         },
@@ -96,6 +94,17 @@ var hook = new Vue({
          */
         shareClicked: function () {
             alert("分享");
-        }
+        },
+        /**
+         * speackSlotName字段初始化函数
+         */
+        slotNameInit: function () {
+            var arr = [];
+            for (var i=1; i<=this.speak.length;){
+                arr.push("left", "center", "right");
+                i += 3;
+            }
+            return arr;
+        },
     }
 });

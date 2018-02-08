@@ -13,6 +13,7 @@
     --text-color3: #a5a5a5; /*次要文本颜色*/
     --button-border-color: #fff; /*按钮边框颜色*/
     --com-border-color: #fff; /*公用边框颜色*/
+    --com-border-color2: #888; /*次要边框颜色*/
     --com-background-color: #fff; /*公用背景颜色*/
     --com-font-fimary: "微软雅黑"; /*公用字体*/
 }
@@ -129,7 +130,7 @@ header页头样式
  */
 #component-header-div{
     height: 30px;
-    width: 100%;
+    width: 100vw;
     background-color: var(--com-next-color-rgba) !important;
     background-color: rgba(87,86,76,0.85);
     padding-top: 9px;
@@ -205,11 +206,9 @@ circleHeadPortrait头像框样式
 sidebar侧边栏样式
 */
 #component-sidebar-div{
-    height: 500px;
     position: fixed;
 }
 #component-sidebar-div .component-sidebar-body{
-    height: 400px;
     float: left;
     margin-right: 36px;
 }
@@ -223,10 +222,6 @@ sidebar侧边栏样式
     color: white;
     line-height: 2.8;
     border-bottom: 1px solid rgba(255,255,255,0);
-}
-#component-sidebar-div .component-sidebar-ul li:first-child{
-    border-bottom: 1px solid var(--com-second-color) !important;
-    border-bottom: 1px solid #d3a45e;
 }
 #component-sidebar-div #component-sidebar-li-active{
     border-bottom: 1px solid var(--com-second-color) !important;
@@ -303,6 +298,7 @@ displaypost展示帖子组件
     color: #fff;
     font-weight: 100;
     line-height: 1.6;
+    font-size: 20px;
 }
 #component-displaypost-div .component-displaypost-body-img{
     width: 100%;
@@ -313,7 +309,7 @@ displaypost展示帖子组件
     margin: 0.5% 0 0 0.5%;
     width: 33%;
     height: 250px;
-    background-size: 100% 100%;
+    background-size: 100% 100% !important;
     border-radius: 2%;
     float: left;
 }
@@ -321,4 +317,112 @@ displaypost展示帖子组件
 #component-displaypost-div .component-displaypost-body-img div:nth-child(4),
 #component-displaypost-div .component-displaypost-body-img div:nth-child(7){
     margin: 0.5% 0 0 0;
+}
+#component-displaypost-div .component-displaypost-body-speak{
+    width: 100%;
+    display: inline-block;
+    padding-top: 3%;
+}
+#component-displaypost-div .component-displaypost-body-speak-left,
+#component-displaypost-div .component-displaypost-body-speak-center,
+#component-displaypost-div .component-displaypost-body-speak-right{
+    width: 33%;
+    float: left;
+    margin-left: 0.5%;
+}
+#component-displaypost-div .component-displaypost-body-speak-left{
+    margin-left: 0;
+}
+
+/*
+speack评论组件
+ */
+#component-speak-div{
+    width: 100%;
+    border-top: 1px solid var(--com-border-color2) !important;
+    border-top: 1px solid #888;
+    border-bottom: 1px solid var(--com-border-color2) !important;
+    border-bottom: 1px solid #888;
+    border-radius: 26px;
+    margin-top: 5%;
+}
+#component-speak-div .component-speak-body{
+    margin: 4% 4%;
+    display: inline-block;
+    width: 92%;
+}
+#component-speak-div .component-speak-body .component-speak-headportrait{
+    margin-bottom: 2%;
+    float: left;
+}
+#component-speak-div .component-speak-headportrait .component-circleHeadPortrait-img{
+    width: 25px;
+    height: 25px;
+}
+#component-speak-div .component-speak-headportrait .component-circleHeadPortrait-name{
+    font-size: 14px;
+    color: var(--text-color) !important;
+    color: white;
+    top: 3px;
+    float: left;
+}
+#component-speak-div .component-speak-body .component-speak-span{
+    margin-top: 1%;
+    width: 100%;
+    color: var(--text-color3) !important;
+    color: #a5a5a5;
+    font-size: 14px;
+    font-weight: 100;
+    float: left;
+}
+#component-speak-div .component-speak-body p{
+    float: right;
+    margin: 7px;
+    color: var(--text-color) !important;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 100;
+}
+
+/*
+下拉菜单组件
+ */
+#component-drop-menu-div{
+    width: 150px;
+    min-height: 50px;
+}
+#component-drop-menu-div .component-drop-menu-button{
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    float: right;
+}
+#component-drop-menu-div .component-drop-menu-list{
+    width: 100%;
+    float: left;
+    display: none;
+    background-color: var(--com-background-color) !important;
+    background-color: #ffffff;
+    font-size: 16px;
+    font-weight: 100;
+    border-radius: 4px;
+    border: 1px solid var(--com-border-color2) !important;
+    border: 1px solid #888888;
+    box-shadow: 2px 2px 1px #757575;
+    line-height: 24px;
+}
+#component-drop-menu-div .component-drop-menu-list ul{
+    list-style-type: none;
+}
+#component-drop-menu-div .component-drop-menu-list a{
+    text-decoration-line: none;
+    color: var(--text-color2) !important;
+    color: #888888;
+    width: 100%;
+    height: 100%;
+}
+#component-drop-menu-div .component-drop-menu-list a:hover{
+    color: var(--com-second-color) !important;
+    color: #d3a45e;
 }

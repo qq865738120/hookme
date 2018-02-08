@@ -57,4 +57,23 @@ public class UserDaoImp implements UserDao {
             }
         }
     }
+
+    /**
+     * 根据用户id查找用户
+     * @param id
+     * @param userRepository
+     * @return
+     */
+    @Override
+    public DaoResult<User> query(Long id, UserRepository userRepository) {
+        User user = userRepository.findOne(id);
+        DaoResult<User> daoResult = null;
+        if (user == null) { //如果查询结果为空
+            daoResult = new DaoResult<User>(DaoResultEnum.QUERY_NULL);
+        } else { //如果查询结果不为空
+            daoResult = new DaoResult<>(DaoResultEnum.QUERY_SUCCESS);
+            daoResult.setData(user);
+        }
+        return null;
+    }
 }

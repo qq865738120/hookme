@@ -1,0 +1,22 @@
+#邮箱服务器相关配置
+email:
+  name: hook_active@hookmail.top
+  password: zwJ865738120
+  host: smtp.mxhichina.com
+
+#百度定位api相关配置
+baidupoint:
+  dns: http://api.map.baidu.com/location/ip
+  ak: y4ekV2488FmEOt5WGGRskvCpAW0PX3Cf
+  coor: bd09ll
+
+#附近模块相关配置
+nearByService:
+  startDistance: 0.008
+  maxDistance: 0.2
+
+#aes加密算法相关配置
+aes:
+  secretKey: 123456789
+
+

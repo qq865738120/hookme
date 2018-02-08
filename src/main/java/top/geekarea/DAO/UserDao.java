@@ -11,4 +11,6 @@ import top.geekarea.entity.User;
 public interface UserDao {
 
     DaoResult save(User user, UserRepository userRepository);
+
+    DaoResult<User> query(Long id, UserRepository userRepository);
 }

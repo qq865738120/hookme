@@ -56,11 +56,11 @@ public class LoginInterceptor implements HandlerInterceptor {
 //        }
 //        System.out.println(session.getAttribute("username"));
             //httpServletResponse.sendRedirect("/login");
-        System.out.println("开始渲染");
+//        System.out.println("开始渲染");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) throws Exception {
-        System.out.println("结束");
+//        System.out.println("结束");
     }
 }

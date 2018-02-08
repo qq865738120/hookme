@@ -27,7 +27,7 @@ public class Test {
     }
 
 //    @PostMapping(value = "/loginpost")
-//    public Result loginPost() throws Exception {
+//    public HTTPResult loginPost() throws Exception {
 ////        User user = new User();
 ////        user.setAge(20);
 ////        user.setSex("nam");

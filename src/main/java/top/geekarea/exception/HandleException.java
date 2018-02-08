@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import top.geekarea.entity.Result;
+import top.geekarea.common.HTTPResult;
 import top.geekarea.utils.ResultUtil;
 
 /**
@@ -19,7 +19,7 @@ public class HandleException {
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public Result handleException(Exception e) {
+    public HTTPResult handleException(Exception e) {
         if (e instanceof MyException){
             MyException myException = (MyException) e;
             return ResultUtil.error(myException.getCode(), myException.getMessage());
@@ -27,6 +27,5 @@ public class HandleException {
             logger.error("【系统异常】", e);
             return ResultUtil.error(-1, "未知错误");
         }
-
     }
 }

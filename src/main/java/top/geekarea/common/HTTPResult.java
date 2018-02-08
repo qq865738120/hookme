@@ -1,10 +1,10 @@
-package top.geekarea.entity;
+package top.geekarea.common;
 
 /**
  * http请求返回的包装类
  * Created by code_xia on 2017/3/31.
  */
-public class Result<T> {
+public class HTTPResult<T> {
 
     private Integer code; //错误码
     private String msg; //提示信息

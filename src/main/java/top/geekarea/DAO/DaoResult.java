@@ -7,11 +7,12 @@ import top.geekarea.enums.DaoResultEnum;
  * dao统一结果返回类
  * Created by code_xia on 2017/4/18.
  */
-public class DaoResult implements ComResult {
+public class DaoResult<T> implements ComResult {
 
     private int code;
     private boolean result;
     private String msg;
+    private T data;
 
     public DaoResult() {
 
@@ -50,12 +51,26 @@ public class DaoResult implements ComResult {
         this.msg = msg;
     }
 
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
     @Override
     public String toString() {
-        return "DaoResult{" +
-                "code=" + code +
-                ", result=" + result +
-                ", msg='" + msg + '\'' +
-                '}';
+        final StringBuilder sb = new StringBuilder("{");
+        sb.append("\"code\":")
+                .append(code);
+        sb.append(",\"result\":")
+                .append(result);
+        sb.append(",\"msg\":\"")
+                .append(msg).append('\"');
+        sb.append(",\"data\":")
+                .append(data);
+        sb.append('}');
+        return sb.toString();
     }
 }
