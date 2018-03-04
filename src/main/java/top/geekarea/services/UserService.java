@@ -105,7 +105,7 @@ public class UserService {
             DaoResult daoResult = new UserDaoImp().save(user, userRepository); //用户数据写入数据库
             if (daoResult.isResult()) { //用户信息成功写入数据库
                 if (new FormVerifyFactory().getVerifyByClass(FormVerifyEnum.EMAIL).form((String)jsonObject.get("userName")).isResult()) {
-                    MailUtil.sendMail(user.getUserName(), UUIDUtil.createCode(), myMailConfiguration); //发送验证邮件
+//                    MailUtil.sendMail(user.getUserName(), UUIDUtil.createCode(), myMailConfiguration); //发送验证邮件
                 }
             }
             return daoResult;
