@@ -1,11 +1,11 @@
-![](https://github.com/qq865738120/hookme/blob/master/src/main/resources/static/img/logo1.png)
+![home](https://github.com/qq865738120/hookme/blob/master/src/main/resources/static/img/logo1.png)
 # hook - A Social platform
 
 version：1.0.5dep<br>
 
 This is a appliciation for making friend.By using it, you can find like-minded people.And you can interact with them line.Set up your own circle.But at present only web clients.We will launch the Android and IOS versions in the future.Please look forward to it.At the same time, welcome to join us.Strive for a common goal.<br>
 
-[Home Page](http://www.hookme.cn:13145)|[Demo Video](https://pan.baidu.com/s/1eSRUbF8)
+[Home Page](http://www.hookme.cn:13145 "主页")|[Demo Video](https://pan.baidu.com/s/1eSRUbF8 "演示视频")
 *********************
 Environmental Science
 ---------------------
