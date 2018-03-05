@@ -32,9 +32,12 @@ public class LoginInterceptor implements HandlerInterceptor {
             for (Cookie c: cookies) {
                 if (c.getName().equals("userName")) { //找到存放用户名的cookie
                     user = userRepository.findByUserName(c.getValue());
+                    break;
                 }
-                if (c.getName().equals("password")) { //找到存放密码的cookie
-                    if (user != null){
+            }
+            if (user != null){
+                for (Cookie c: cookies) {
+                    if (c.getName().equals("password")) { //找到存放密码的cookie
                         if (c.getValue().equals(user.getPassword())) { //密码匹配成功
                             logger.info("【身份验证成功】："+user.toString());
                             return true;

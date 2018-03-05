@@ -28,6 +28,7 @@ var fontComponent = {
                 password2: this.password2,
                 age: this.age,
             }
+            console.log(data)
             var checkbox = document.getElementsByClassName("local-component-form-right-body-second-checkbox");
             for (var i=0; i<checkbox.length; i++) {
                 if (checkbox[i].checked) {
