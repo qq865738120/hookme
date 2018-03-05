@@ -38,7 +38,7 @@ Version Description
 
 Contact us
 ---------------------
-* author:   code_xia
-* email:    qqq865738120@126.com
-* QQ:   865738120
-* WeChat:   qq865738120
+* author:   `code_xia`
+* email:    `code_xia@hookmail.top`,`qqq865738120@126.com`
+* QQ:   `865738120`
+* WeChat:   `qq865738120`
